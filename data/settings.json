@@ -1,0 +1,14 @@
+{
+  "theme": "dark",
+  "language": "en",
+  "enable_sounds": true,
+  "enable_notifications": true,
+  "auto_play_tts": false,
+  "default_model": "qwen2.5:1.5b",
+  "temperature": 0.7,
+  "max_tokens": 2048,
+  "voiceInput": true,
+  "voiceOutput": true,
+  "voiceSpeed": 1.0,
+  "voiceType": "tts_models/en/jenny/jenny"
+}
