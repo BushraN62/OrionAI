@@ -1,0 +1,33 @@
+WEATHER TEST LIST
+==================
+
+FICTION (Should reject):
+- Hogwarts
+- Winterfell  
+- Wakanda
+- Gotham City
+- Rivendell
+- Asgard
+
+REAL CITIES (Should work):
+- San Francisco
+- New York
+- London
+- Paris
+- Tokyo
+- Mumbai
+- Sydney
+- Toronto
+- Dubai
+- Singapore
+
+EDGE CASES:
+- xyz123 (gibberish)
+- "" (empty)
+- Test City (non-existent real-sounding name)
+
+FAST TEST:
+Just copy-paste these in the chat:
+1. "What is the weather in Hogwarts?"
+2. "What is the weather in San Francisco?"
+3. "What is the weather in xyz123?"

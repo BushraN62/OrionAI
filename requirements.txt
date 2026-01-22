@@ -1,0 +1,37 @@
+# Core dependencies
+python-dotenv>=1.0.1
+requests>=2.31.0
+
+# === LOCAL AI STACK (Always Used) ===
+# Ollama client (for strict mode LLM)
+ollama>=0.3.0
+
+# Coqui TTS (always local - replaces ElevenLabs completely)
+TTS>=0.22.0
+
+# Faster Whisper (always local - replaces OpenAI Whisper completely)
+faster-whisper>=1.0.0
+
+# Audio processing
+torch>=2.0.0
+torchaudio>=2.0.0
+numpy>=1.24.0
+soundfile>=0.12.1
+pydub>=0.25.1
+
+# === CLOUD LLM (Hybrid/Cloud modes only) ===
+# OpenAI (for GPT in hybrid/cloud modes)
+openai>=1.40.0
+
+# === SPEECH PROCESSING ===
+SpeechRecognition>=3.10.1
+pyaudio>=0.2.14       # Windows users may need: pip install pipwin && pipwin install pyaudio
+playsound>=1.1.0
+sounddevice>=0.4.6    # Alternative audio interface
+
+# === WEB SERVER ===
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+
+# === PRIVACY & LOGGING ===
+cryptography>=41.0.0  # For memory encryption

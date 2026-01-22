@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+html, body, #root { 
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+/* Global Styles */
+.glass-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: all 300ms;
+}
+
+.glass-card-hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transition: all 300ms;
+}
+
+.glass-card-hover:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+}
+
+.glow-btn {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-btn:hover {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    transform: scale(1.02);
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #6366f1, #a78bfa, #22d3ee);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.cosmic-bg {
+    position: relative;
+    overflow: hidden;
+    transition: all 300ms;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 15, 26, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.5);
+}
+
+/* Code block styling */
+pre {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+/* Selection styling */
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: #e2e8f0;
+}
+
+/* Focus ring styling */
+:focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.5);
+    outline-offset: 2px;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Particle effect background */
+@layer base {
+  .cosmic-bg {
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.08), transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.05), transparent 40%),
+      radial-gradient(ellipse at 20% 80%, rgba(34, 211, 238, 0.05), transparent 40%),
+      linear-gradient(180deg, #020617 0%, #0f172a 50%, #020617 100%);
+  }
+  
+  .cosmic-particles::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(2px 2px at 60% 70%, rgba(99,102,241,0.4), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(167,139,250,0.4), transparent),
+      radial-gradient(1px 1px at 80% 10%, rgba(34,211,238,0.3), transparent),
+      radial-gradient(2px 2px at 90% 60%, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 200%, 180% 180%, 220% 220%, 190% 190%, 210% 210%;
+    background-position: 0% 0%, 100% 100%, 50% 50%, 80% 20%, 10% 90%;
+    animation: particles 20s ease-in-out infinite;
+  }
+}
+
+@keyframes particles {
+  0%, 100% { 
+    background-position: 0% 0%, 100% 100%, 50% 50%, 80% 20%, 10% 90%;
+  }
+  50% { 
+    background-position: 100% 100%, 0% 0%, 60% 40%, 20% 80%, 90% 10%;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5);
+}
+
+/* Markdown prose styles */
+@layer utilities {
+  .prose {
+    max-width: 65ch;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .prose :where(p):not(:where([class~="not-prose"] *)) {
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
+    line-height: 1.7;
+    white-space: pre-wrap;
+  }
+  .prose :where(code):not(:where([class~="not-prose"] *)) {
+    font-size: 0.875em;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    color: #22d3ee;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .prose :where(pre):not(:where([class~="not-prose"] *)) {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1em;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 1em 0;
+  }
+  .prose :where(pre code):not(:where([class~="not-prose"] *)) {
+    background: transparent;
+    padding: 0;
+    white-space: pre;
+  }
+  .prose-invert {
+    color: rgb(226 232 240);
+  }
+  .prose-sm {
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+  
+  /* ===== KaTeX Mathematical Equations Styling ===== */
+  
+  /* Base KaTeX container */
+  .prose .katex {
+    font-size: 1.1em !important;
+    color: rgb(226 232 240) !important;
+  }
+  
+  /* Inline math equations (wrapped in $...$) */
+  .prose .katex:not(.katex-display) {
+    display: inline;
+    margin: 0 0.2em;
+    padding: 0.1em 0.3em;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 0.25rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+  
+  /* Block/Display math equations (wrapped in $$...$$) */
+  .prose .katex-display {
+    display: block !important;
+    margin: 1.5em 0 !important;
+    padding: 1em !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+    border-radius: 0.75rem !important;
+    border: 1px solid rgba(99, 102, 241, 0.3) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    text-align: center !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(99, 102, 241, 0.1) !important;
+  }
+  
+  /* Ensure proper text wrapping in KaTeX */
+  .prose .katex-html {
+    white-space: nowrap;
+  }
+  
+  /* Make sure display equations are visible and centered */
+  .prose .katex-display > .katex {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  /* Style for math expressions inside paragraphs */
+  .prose p .katex {
+    vertical-align: middle;
+  }
+  
+  /* Scrollbar styling for overflow equations */
+  .prose .katex-display::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .prose .katex-display::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 4px;
+  }
+  
+  .prose .katex-display::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.4);
+    border-radius: 4px;
+  }
+  
+  .prose .katex-display::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.6);
+  }
+}
+
+/* ===== LIGHT THEME STYLES ===== */
+.light-theme {
+  /* Override background colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+}
+
+/* Light theme main background */
+.light-theme body,
+.light-theme #root,
+.light-theme .bg-slate-950 {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 50%, #d6dce4 100%) !important;
+  color: #0f172a !important;
+}
+
+/* Light theme cosmic background */
+.light-theme .cosmic-bg {
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.08), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.08), transparent 40%),
+    radial-gradient(ellipse at 20% 80%, rgba(34, 211, 238, 0.08), transparent 40%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f0f4f8 100%) !important;
+}
+
+/* Light theme text colors */
+.light-theme .text-slate-200,
+.light-theme .text-slate-300,
+.light-theme .text-slate-400 {
+  color: #475569 !important;
+}
+
+.light-theme .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Light theme backgrounds */
+.light-theme .bg-slate-900,
+.light-theme .bg-slate-900\/90,
+.light-theme .bg-slate-900\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light-theme .bg-slate-800,
+.light-theme .bg-slate-800\/30,
+.light-theme .bg-slate-800\/50 {
+  background-color: rgba(248, 250, 252, 0.8) !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Light theme borders */
+.light-theme .border-slate-800,
+.light-theme .border-slate-800\/50,
+.light-theme .border-slate-800\/80,
+.light-theme .border-slate-700,
+.light-theme .border-slate-700\/50 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Light theme glass cards */
+.light-theme .glass-card,
+.light-theme .glass-card-hover {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+.light-theme .glass-card-hover:hover {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Light theme chat messages */
+.light-theme .bg-blue-500\/5 {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+}
+
+.light-theme .bg-slate-700\/20 {
+  background-color: rgba(148, 163, 184, 0.12) !important;
+}
+
+/* Light theme code blocks */
+.light-theme pre {
+  background: rgba(241, 245, 249, 0.9) !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.light-theme code {
+  background: rgba(226, 232, 240, 0.8) !important;
+  color: #7c3aed !important;
+}
+
+/* Light theme KaTeX math */
+.light-theme .katex {
+  color: #0f172a !important;
+}
+
+.light-theme .katex:not(.katex-display) {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border: 1px solid rgba(99, 102, 241, 0.15) !important;
+}
+
+.light-theme .katex-display {
+  background: rgba(248, 250, 252, 0.9) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(99, 102, 241, 0.08) !important;
+}
+
+/* Light theme scrollbar */
+.light-theme ::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.5) !important;
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3) !important;
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.5) !important;
+}
+
+/* Light theme gradients */
+.light-theme .gradient-text {
+  background: linear-gradient(to right, #4f46e5, #7c3aed, #0ea5e9) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+}
+
+/* Light theme hover effects */
+.light-theme .hover\:bg-slate-800\/50:hover {
+  background-color: rgba(226, 232, 240, 0.6) !important;
+}
+
+.light-theme .hover\:bg-slate-700:hover {
+  background-color: rgba(203, 213, 225, 0.6) !important;
+}
+
+/* Light theme focus */
+.light-theme :focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.6) !important;
+}
+
+/* Light theme selection */
+.light-theme ::selection {
+  background: rgba(99, 102, 241, 0.2) !important;
+  color: #0f172a !important;
+}
+
+/* Light theme starfield (reduce opacity) */
+.light-theme canvas {
+  opacity: 0.3 !important;
+}

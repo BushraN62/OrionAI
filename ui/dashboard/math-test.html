@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Rendering Test - Orion Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #6366f1, #a78bfa, #22d3ee);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #a78bfa;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .description {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .math-content {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            margin-top: 1rem;
+        }
+        
+        /* Inline math */
+        .math-inline {
+            display: inline;
+            margin: 0 0.2em;
+            padding: 0.1em 0.3em;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 0.25rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Display math */
+        .math-display {
+            display: block;
+            margin: 1.5em 0;
+            padding: 1em;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            overflow-x: auto;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(99, 102, 241, 0.1);
+        }
+        
+        .katex {
+            color: #e2e8f0 !important;
+        }
+        
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.2em 0.4em;
+            border-radius: 0.25rem;
+            color: #22d3ee;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .example-list {
+            margin-top: 1rem;
+        }
+        
+        .example-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0.5rem;
+        }
+        
+        .example-label {
+            color: #22d3ee;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Orion Math Rendering Test</h1>
+        
+        <div class="test-section">
+            <h2>📝 Inline Math Examples</h2>
+            <p class="description">Inline math is rendered within text using single dollar signs: <code>$equation$</code></p>
+            
+            <div class="example-list">
+                <div class="example-item">
+                    <div class="example-label">Example 1: Simple equation</div>
+                    <p>The quadratic formula is <span id="inline1"></span> which solves <span id="inline1b"></span>.</p>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Example 2: Einstein's equation</div>
+                    <p>Einstein's famous equation <span id="inline2"></span> shows mass-energy equivalence.</p>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Example 3: Greek letters and subscripts</div>
+                    <p>The standard deviation is <span id="inline3"></span> where μ is the mean.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📊 Display Math Examples</h2>
+            <p class="description">Display math is rendered as a centered block using double dollar signs: <code>$$equation$$</code></p>
+            
+            <div class="example-list">
+                <div class="example-item">
+                    <div class="example-label">Example 1: Integral</div>
+                    <div id="display1"></div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Example 2: Matrix</div>
+                    <div id="display2"></div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Example 3: Sum notation</div>
+                    <div id="display3"></div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Example 4: Limits</div>
+                    <div id="display4"></div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Example 5: Complex equation</div>
+                    <div id="display5"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔬 Advanced Examples</h2>
+            <p class="description">More complex mathematical expressions</p>
+            
+            <div class="example-list">
+                <div class="example-item">
+                    <div class="example-label">Calculus: Fundamental Theorem</div>
+                    <div id="advanced1"></div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Statistics: Normal Distribution</div>
+                    <div id="advanced2"></div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-label">Physics: Schrödinger Equation</div>
+                    <div id="advanced3"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>✅ Testing Instructions</h2>
+            <p class="description">
+                This page demonstrates how mathematical equations will appear in the Orion Dashboard. 
+                All equations are rendered using KaTeX, the same library used in the main application.
+            </p>
+            <div class="math-content">
+                <strong>How to use math in Orion:</strong>
+                <ul style="margin-top: 1rem; line-height: 2;">
+                    <li><strong>Inline math:</strong> Wrap in single dollar signs: <code>$x^2 + y^2 = z^2$</code></li>
+                    <li><strong>Display math:</strong> Wrap in double dollar signs: <code>$$\int_0^1 x^2 dx$$</code></li>
+                    <li><strong>Greek letters:</strong> Use backslash: <code>$\alpha$, $\beta$, $\gamma$</code></li>
+                    <li><strong>Fractions:</strong> Use <code>\frac{numerator}{denominator}</code></li>
+                    <li><strong>Subscripts/Superscripts:</strong> Use <code>_</code> and <code>^</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js"></script>
+    <script>
+        // Inline examples
+        katex.render('x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}', document.getElementById('inline1'), {
+            throwOnError: false,
+            displayMode: false
+        });
+        
+        katex.render('ax^2 + bx + c = 0', document.getElementById('inline1b'), {
+            throwOnError: false,
+            displayMode: false
+        });
+        
+        katex.render('E = mc^2', document.getElementById('inline2'), {
+            throwOnError: false,
+            displayMode: false
+        });
+        
+        katex.render('\\sigma = \\sqrt{\\frac{\\sum(x_i - \\mu)^2}{n}}', document.getElementById('inline3'), {
+            throwOnError: false,
+            displayMode: false
+        });
+        
+        // Display examples
+        katex.render('\\int_0^\\infty e^{-x^2} dx = \\frac{\\sqrt{\\pi}}{2}', document.getElementById('display1'), {
+            throwOnError: false,
+            displayMode: true
+        });
+        
+        katex.render('\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}', document.getElementById('display2'), {
+            throwOnError: false,
+            displayMode: true
+        });
+        
+        katex.render('\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}', document.getElementById('display3'), {
+            throwOnError: false,
+            displayMode: true
+        });
+        
+        katex.render('\\lim_{x \\to \\infty} \\left(1 + \\frac{1}{x}\\right)^x = e', document.getElementById('display4'), {
+            throwOnError: false,
+            displayMode: true
+        });
+        
+        katex.render('f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^2}', document.getElementById('display5'), {
+            throwOnError: false,
+            displayMode: true
+        });
+        
+        // Advanced examples
+        katex.render('\\int_a^b f\'(x) dx = f(b) - f(a)', document.getElementById('advanced1'), {
+            throwOnError: false,
+            displayMode: true
+        });
+        
+        katex.render('f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}} \\exp\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right)', document.getElementById('advanced2'), {
+            throwOnError: false,
+            displayMode: true
+        });
+        
+        katex.render('i\\hbar\\frac{\\partial}{\\partial t}\\Psi(\\mathbf{r},t) = \\left[-\\frac{\\hbar^2}{2m}\\nabla^2 + V(\\mathbf{r},t)\\right]\\Psi(\\mathbf{r},t)', document.getElementById('advanced3'), {
+            throwOnError: false,
+            displayMode: true
+        });
+    </script>
+</body>
+</html>
